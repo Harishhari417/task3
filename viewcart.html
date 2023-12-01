@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cart</title>
+    
+</head>
+<body>
+
+    <header>
+        <h1>View Cart</h1>
+    </header>
+
+    <section class="cart-items">
+        
+        <ul id="cart-list"></ul>
+    </section>
+
+   
+    <script>
+       
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        
+        const cartList = document.getElementById('cart-list');
+        cartItems.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <img src="${item.imageUrl}" alt="${item.productName}">
+                <p>${item.productName}</p>
+                <p><span>Price: ${item.price}</span></p>
+            `;
+            cartList.appendChild(listItem);
+        });
+    </script>
+
+</body>
+</html>
